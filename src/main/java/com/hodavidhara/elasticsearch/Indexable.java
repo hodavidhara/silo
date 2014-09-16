@@ -1,4 +1,4 @@
-package com.hodavidhara.model;
+package com.hodavidhara.elasticsearch;
 
 import com.google.common.collect.Maps;
 

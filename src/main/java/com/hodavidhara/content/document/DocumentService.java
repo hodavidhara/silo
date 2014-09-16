@@ -1,6 +1,4 @@
-package com.hodavidhara.document;
-
-import com.hodavidhara.model.Document;
+package com.hodavidhara.content.document;
 
 import java.io.InputStream;
 

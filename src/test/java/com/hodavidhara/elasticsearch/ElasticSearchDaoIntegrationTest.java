@@ -1,7 +1,6 @@
 package com.hodavidhara.elasticsearch;
 
 import com.hodavidhara.base.IntegrationTestBase;
-import com.hodavidhara.model.Indexable;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,7 +21,7 @@ public class ElasticSearchDaoIntegrationTest extends IntegrationTestBase {
     public void testCreateDocument() throws IOException {
         Indexable indexable = new Indexable();
         indexable.setName("haha.jpg");
-        indexable = elasticSearchDao.createDocument(indexable);
+        indexable = elasticSearchDao.create(indexable, Type.INDEXABLE);
         assertNotNull(indexable);
         assertNotNull(indexable.getId());
         assertEquals("haha.jpg", indexable.getName());
@@ -32,12 +31,12 @@ public class ElasticSearchDaoIntegrationTest extends IntegrationTestBase {
     public void testReadDocument() throws IOException {
         Indexable indexable = new Indexable();
         indexable.setName("haha.jpg");
-        indexable = elasticSearchDao.createDocument(indexable);
+        indexable = elasticSearchDao.create(indexable, Type.INDEXABLE);
         assertNotNull(indexable);
         assertNotNull(indexable.getId());
         assertEquals("haha.jpg", indexable.getName());
 
-        Indexable retrievedItem = elasticSearchDao.readDocument(indexable.getId(), Indexable.class);
+        Indexable retrievedItem = elasticSearchDao.read(indexable.getId(), Type.INDEXABLE);
         assertNotNull(retrievedItem);
         assertNotNull(retrievedItem.getId());
         assertEquals("haha.jpg", retrievedItem.getName());
@@ -47,11 +46,11 @@ public class ElasticSearchDaoIntegrationTest extends IntegrationTestBase {
     public void testDeleteDocument() throws IOException {
         Indexable indexable = new Indexable();
         indexable.setName("haha.jpg");
-        indexable = elasticSearchDao.createDocument(indexable);
+        indexable = elasticSearchDao.create(indexable, Type.INDEXABLE);
         assertNotNull(indexable);
         assertNotNull(indexable.getId());
         assertEquals("haha.jpg", indexable.getName());
 
-        elasticSearchDao.deleteDocument(indexable.getId());
+        elasticSearchDao.delete(indexable.getId(), Type.INDEXABLE);
     }
 }

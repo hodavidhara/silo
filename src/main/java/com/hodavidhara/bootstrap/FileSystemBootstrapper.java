@@ -1,6 +1,6 @@
 package com.hodavidhara.bootstrap;
 
-import com.hodavidhara.file.FileSystemService;
+import com.hodavidhara.filesystem.FileSystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

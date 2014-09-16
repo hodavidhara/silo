@@ -1,8 +1,8 @@
-package com.hodavidhara.document;
+package com.hodavidhara.content.document;
 
 import com.hodavidhara.elasticsearch.ElasticSearchDao;
-import com.hodavidhara.file.FileSystemService;
-import com.hodavidhara.model.Document;
+import com.hodavidhara.elasticsearch.Type;
+import com.hodavidhara.filesystem.FileSystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,25 +25,25 @@ public class DocumentServiceImpl implements DocumentService {
         document.setPath("/" + document.getName());
 
         // Try to create the file on the local disk.
-        fileSystemService.createFile(document.getPath(), content);
+        fileSystemService.createDocument(document.getPath(), content);
 
         // Create the representation in ES
-        document = elasticSearchDao.createDocument(document);
+        document = elasticSearchDao.create(document, Type.DOCUMENT);
         return document;
     }
 
     @Override
     public Document getDocument(String id) {
-        return elasticSearchDao.readDocument(id, Document.class);
+        return elasticSearchDao.read(id, Type.DOCUMENT);
     }
 
     @Override
     public void deleteDocument(String id) {
-        Document document = elasticSearchDao.readDocument(id, Document.class);
+        Document document = elasticSearchDao.read(id, Type.DOCUMENT);
 
         if (document != null) {
             fileSystemService.deleteFile(document.getPath());
-            elasticSearchDao.deleteDocument(id);
+            elasticSearchDao.delete(id, Type.DOCUMENT);
         }
     }
 }
