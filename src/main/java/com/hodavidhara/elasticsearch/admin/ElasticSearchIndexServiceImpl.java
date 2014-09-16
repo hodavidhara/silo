@@ -16,6 +16,11 @@ public class ElasticSearchIndexServiceImpl implements ElasticSearchIndexService 
     @Override
     public boolean createIndex(String indexName) {
         elasticSearchClient.getClient().admin().indices().prepareCreate(indexName).get();
+
+        // TODO: Make this good.
+        String tempTest = "{\"directory\": {\"properties\": {\"path\": {\"type\": \"string\", \"index\":\"not_analyzed\"}}}}";
+        elasticSearchClient.getClient().admin().indices().preparePutMapping(indexName).setType("directory").setSource(
+                tempTest).get();
         return indexExists(indexName);
     }
 

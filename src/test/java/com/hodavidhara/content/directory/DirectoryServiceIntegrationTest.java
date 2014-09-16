@@ -47,11 +47,6 @@ public class DirectoryServiceIntegrationTest extends IntegrationTestBase {
         assertDirectoryIsFullyPersisted("c", "/a/b/c/");
     }
 
-    @Test
-    public void testBlah() {
-        assertDirectoryIsFullyPersisted("a", "/a/");
-    }
-
     private void assertDirectoryIsFullyPersisted(String expectedName, String expectedPath) {
         assertDirectoryExistsOnFileSystem(expectedPath);
 
