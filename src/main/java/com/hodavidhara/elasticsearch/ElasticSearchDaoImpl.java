@@ -29,7 +29,7 @@ public class ElasticSearchDaoImpl implements ElasticSearchDao {
         Map<String, Object> source = Maps.newHashMap(indexable.getMetadata());
 
         IndexResponse response = elasticSearchClient.getClient().prepareIndex(ElasticSearchClient.MAIN_INDEX,
-                type.getTypeName()).setSource(source).get();
+                type.getTypeName()).setSource(source).setRefresh(true).get();
 
         indexable.setId(response.getId());
 
@@ -46,7 +46,8 @@ public class ElasticSearchDaoImpl implements ElasticSearchDao {
 
     @Override
     public void delete(String id, Type type) {
-        elasticSearchClient.getClient().prepareDelete(ElasticSearchClient.MAIN_INDEX, type.getTypeName(), id);
+        elasticSearchClient.getClient().prepareDelete(ElasticSearchClient.MAIN_INDEX, type.getTypeName(),
+                id).setRefresh(true).get();
     }
 
     @Override
