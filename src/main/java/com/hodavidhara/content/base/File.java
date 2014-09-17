@@ -1,11 +1,13 @@
-package com.hodavidhara.model;
+package com.hodavidhara.content.base;
+
+import com.hodavidhara.elasticsearch.Indexable;
 
 /**
  *
  */
-public class Document extends Indexable {
+public class File extends Indexable {
 
-    private static final String PATH_PROPERTY = "path";
+    public static final String PATH_PROPERTY = "path";
 
     public String getPath() {
         return getProperty(PATH_PROPERTY);

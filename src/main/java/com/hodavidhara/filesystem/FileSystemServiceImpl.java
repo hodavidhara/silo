@@ -1,4 +1,4 @@
-package com.hodavidhara.file;
+package com.hodavidhara.filesystem;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,8 +16,13 @@ public class FileSystemServiceImpl implements FileSystemService {
     private String dataDirectory;
 
     @Override
-    public void createFile(String relativePath, InputStream inputStream) {
-        FileSystemUtil.createFile(buildFullPath(relativePath), inputStream);
+    public void createDocument(String relativePath, InputStream inputStream) {
+        FileSystemUtil.createDocument(buildFullPath(relativePath), inputStream);
+    }
+
+    @Override
+    public void createDirectory(String relativePath) {
+        FileSystemUtil.createDirectory(buildFullPath(relativePath));
     }
 
     @Override

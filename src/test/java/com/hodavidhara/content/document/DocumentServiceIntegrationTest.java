@@ -1,7 +1,6 @@
-package com.hodavidhara.document;
+package com.hodavidhara.content.document;
 
 import com.hodavidhara.base.IntegrationTestBase;
-import com.hodavidhara.model.Document;
 import com.hodavidhara.util.TestUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

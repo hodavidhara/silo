@@ -1,4 +1,4 @@
-package com.hodavidhara.file;
+package com.hodavidhara.filesystem;
 
 import javax.annotation.Nullable;
 import java.io.*;
@@ -9,7 +9,7 @@ import java.nio.file.Paths;
  */
 public class FileSystemUtil {
 
-    public static void createFile(String path, InputStream inputStream) {
+    public static void createDocument(String path, InputStream inputStream) {
         BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
         FileOutputStream fileOutputStream = null;
         try {
@@ -26,6 +26,13 @@ public class FileSystemUtil {
         } finally {
             close(bufferedInputStream);
             close(fileOutputStream);
+        }
+    }
+
+    public static void createDirectory(String path) {
+        File file = new File(path);
+        if (!file.exists()) {
+            file.mkdir();
         }
     }
 
