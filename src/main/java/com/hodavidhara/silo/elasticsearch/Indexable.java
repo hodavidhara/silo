@@ -5,7 +5,7 @@ import com.google.common.collect.Maps;
 import java.util.Map;
 
 /**
- *
+ * Base class for anything that may be indexed.
  */
 public class Indexable {
 

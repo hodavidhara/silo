@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * Bootstrapper to create the main content index when the application starts up if it doesn't already exist.
  */
 @Component
 public class ElasticSearchIndexBootstrapper extends Bootstrapper {
