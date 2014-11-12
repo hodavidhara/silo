@@ -1,4 +1,4 @@
-cimplisity
+Silo
 ==========
 
 A simple CMS
